@@ -13,11 +13,13 @@ public class Main {
     public static final String SET_PHONE      = "SP";
     public static final String SET_EMAIL      = "SE";
     public static final String LIST_CONTACTS  = "LC";
+    public static final String GET_NUMBER     = "GN";
     public static final String QUIT           = "Q";
 
     //Constantes que definem as mensagens para o utilizador
     public static final String CONTACT_EXISTS = "contactBook.Contact already exists.";
     public static final String NAME_NOT_EXIST = "contactBook.Contact does not exist.";
+    public static final String PHONE_NOT_EXIST = "contactBook.Phone number does not exist.";
     public static final String CONTACT_ADDED = "contactBook.Contact added.";
     public static final String CONTACT_REMOVED = "contactBook.Contact removed.";
     public static final String CONTACT_UPDATED = "contactBook.Contact updated.";
@@ -32,6 +34,9 @@ public class Main {
 
         while (!comm.equals(QUIT)){
             switch (comm) {
+                case GET_NUMBER:
+                    getNumber(in,cBook);
+                    break;
                 case ADD_CONTACT:
                     addContact(in,cBook);
                     break;
@@ -146,5 +151,14 @@ public class Main {
             }
         }
         else System.out.println(BOOK_EMPTY);
+    }
+
+    private static void getNumber(Scanner in, ContactBook cBook) {
+        int phone;
+        phone = in.nextInt(); in.nextLine();
+        String name = cBook.hasPhone(phone);
+        if (name == null) {
+            System.out.println(PHONE_NOT_EXIST);
+        } else System.out.println(name);
     }
 }
