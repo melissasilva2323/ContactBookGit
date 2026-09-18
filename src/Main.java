@@ -14,7 +14,7 @@ public class Main {
     public static final String SET_EMAIL      = "SE";
     public static final String LIST_CONTACTS  = "LC";
     public static final String GET_NUMBER     = "GN";
-    public static final String EQUAL_PHONES     = "EP";
+    public static final String EQUAL_PHONES   = "EP";
     public static final String QUIT           = "Q";
 
     //Constantes que definem as mensagens para o utilizador
@@ -63,6 +63,7 @@ public class Main {
                     break;
                 case EQUAL_PHONES:
                     equalPhones(cBook);
+                    break;
                 default:
                     System.out.println(COMMAND_ERROR);
             }
@@ -168,9 +169,8 @@ public class Main {
     }
 
     private static void equalPhones(ContactBook cBook) {
-        if(cBook.hasRepeated())
+        if (cBook.hasRepeated()) {
             System.out.println(REPEATED);
-        else
-            System.out.println(NO_REPEATED);
+        } else { System.out.println(NO_REPEATED); }
     }
 }
