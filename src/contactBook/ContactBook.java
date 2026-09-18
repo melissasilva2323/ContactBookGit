@@ -66,6 +66,17 @@ public class ContactBook {
         contacts[searchIndex(name)].setEmail(email);
     }
 
+    public boolean hasRepeated(){
+        for (int i = 0; i < contacts.length; i++) {
+            for (int j = i + 1; j < contacts.length; j++) {
+                if (contacts[i].equals(contacts[j])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     private int searchIndex(String name) {
         int i = 0;
         int result = -1;
@@ -91,6 +102,7 @@ public class ContactBook {
         if (found) result = i;
         return result;
     }
+
 
     private void resize() {
         Contact tmp[] = new Contact[2*contacts.length];
